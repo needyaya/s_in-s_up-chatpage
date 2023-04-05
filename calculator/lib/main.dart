@@ -62,7 +62,8 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           num1 = double.parse(table.elementAt(1));
           precentage = ((num - num1) / num1) * 100;
           result = precentage.toString();
-        } else {
+        } 
+       /* else {
         try {
           Parser p = Parser();
           Expression exp = p.parse(expression);
@@ -72,7 +73,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         } catch (e) {
           result = "Error";
         }}
-      } else {
+      }*/ else {
         equationFontSize = 48.0;
         resultFontSize = 38.0;
         if (equation == "0") {
