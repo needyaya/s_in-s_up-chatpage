@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
                       userInput,
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.black,
+                        color: Colors.pink,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
