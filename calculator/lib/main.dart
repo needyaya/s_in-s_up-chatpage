@@ -72,8 +72,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           table = equation.split("-");
           num = double.parse(table.elementAt(0));
           num1 = double.parse(table.elementAt(1));
-          precentage = num - num1;
-          result = precentage.toString();
+          result = '${num - num1}';
         }
         if (buttonText == "x") {
           table = equation.split("x");
