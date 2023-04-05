@@ -11,6 +11,7 @@ class Calculator extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Calculator',
+      theme: ThemeData(primarySwatch: Colors.pink),
       home: SimpleCalculator(),
     );
   }
@@ -46,47 +47,26 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         if (equation == "") {
           equation = "0";
         }
-      } else if (buttonText == "=") {
+      } else if (buttonText == "=" ) {
         equationFontSize = 38.0;
         resultFontSize = 48.0;
 
         expression = equation;
         expression = expression.replaceAll('X', '*');
         expression = expression.replaceAll('÷', '/');
+       
+        if (expression == "~") {
+          table = equation.split("~");
+          num = double.parse(table.elementAt(0));
+          num1 = double.parse(table.elementAt(1));
+          print(num);
+          result = '${((num - num) * num1) / 100}';
+        } else {
+          Parser p = Parser();
+          Expression exp = p.parse(expression);
 
-        if (buttonText == "percentage") {
-          table = equation.split("percentage");
-          num = double.parse(table.elementAt(0));
-          num1 = double.parse(table.elementAt(1));
-          precentage = ((num - num1) / num1) * 100;
-          result = precentage.toString();
-        }
-        if (buttonText == "+") {
-          table = equation.split("+");
-          num = double.parse(table.elementAt(0));
-          num1 = double.parse(table.elementAt(1));
-          precentage = num1 + num;
-          result = precentage.toString();
-        }
-        if (buttonText == "-") {
-          table = equation.split("-");
-          num = double.parse(table.elementAt(0));
-          num1 = double.parse(table.elementAt(1));
-          result = '${num - num1}';
-        }
-        if (buttonText == "x") {
-          table = equation.split("x");
-          num = double.parse(table.elementAt(0));
-          num1 = double.parse(table.elementAt(1));
-          precentage = num * num1;
-          result = precentage.toString();
-        }
-        if (buttonText == "÷") {
-          table = equation.split("÷");
-          num = double.parse(table.elementAt(0));
-          num1 = double.parse(table.elementAt(1));
-          precentage = num / num1;
-          result = precentage.toString();
+          ContextModel cm = ContextModel();
+          result = '${exp.evaluate(EvaluationType.REAL, cm)}';
         }
       } else {
         equationFontSize = 48.0;
@@ -155,8 +135,8 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                   children: [
                     TableRow(children: [
                       buildButton("C", 1, Colors.redAccent),
-                      buildButton("⌫", 1, Color.fromARGB(255, 114, 177, 229)),
-                      buildButton("÷", 1, Color.fromARGB(255, 114, 33, 158)),
+                      buildButton("⌫", 1, Colors.blue),
+                      buildButton("÷", 1, Colors.blue),
                     ]),
                     TableRow(children: [
                       buildButton("7", 1, Colors.black54),
@@ -195,7 +175,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                       buildButton("+", 1, Colors.blue),
                     ]),
                     TableRow(children: [
-                      buildButton("percentage", 1, Colors.redAccent),
+                      buildButton("%", 1, Colors.redAccent),
                     ]),
                     TableRow(children: [
                       buildButton("=", 1, Colors.redAccent),
