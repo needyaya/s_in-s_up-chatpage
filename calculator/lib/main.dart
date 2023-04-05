@@ -56,9 +56,10 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         expression = expression.replaceAll('÷', '/');
 
         if (buttonText == "percentage") {
+          
           table = equation.split("percentage");
-          num = table.elementAt(0);
-          num1 = table.elementAt(1);
+          num = double.parse(table.elementAt(0));
+          num1 = double.parse(table.elementAt(1));
           precentage = ((num - num1) / num1) * 100;
           result = precentage.toString();
         } else {
