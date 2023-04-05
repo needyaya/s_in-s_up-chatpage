@@ -11,7 +11,7 @@ class Calculator extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Calculator',
-      theme: ThemeData(primarySwatch: Colors.pink),
+      
       home: SimpleCalculator(),
     );
   }
@@ -56,32 +56,51 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         expression = expression.replaceAll('÷', '/');
 
         if (buttonText == "percentage") {
-          
           table = equation.split("percentage");
           num = double.parse(table.elementAt(0));
           num1 = double.parse(table.elementAt(1));
           precentage = ((num - num1) / num1) * 100;
           result = precentage.toString();
-        } 
-       /* else {
-        try {
-          Parser p = Parser();
-          Expression exp = p.parse(expression);
-
-          ContextModel cm = ContextModel();
-          result = '${exp.evaluate(EvaluationType.REAL, cm)}';
-        } catch (e) {
-          result = "Error";
-        }}
-      }*/ else {
-        equationFontSize = 48.0;
-        resultFontSize = 38.0;
-        if (equation == "0") {
-          equation = buttonText;
-        } else {
-          equation = equation + buttonText;
         }
+         if (buttonText == "percentage") {
+          table = equation.split("percentage");
+          num = double.parse(table.elementAt(0));
+          num1 = double.parse(table.elementAt(1));
+          precentage = ((num - num1) / num1) * 100;
+          result = precentage.toString();
+        }
+         if (buttonText == "percentage") {
+          table = equation.split("percentage");
+          num = double.parse(table.elementAt(0));
+          num1 = double.parse(table.elementAt(1));
+          precentage = ((num - num1) / num1) * 100;
+          result = precentage.toString();
+        } if (buttonText == "percentage") {
+          table = equation.split("percentage");
+          num = double.parse(table.elementAt(0));
+          num1 = double.parse(table.elementAt(1));
+          precentage = ((num - num1) / num1) * 100;
+          result = precentage.toString();
+        } if (buttonText == "percentage") {
+          table = equation.split("percentage");
+          num = double.parse(table.elementAt(0));
+          num1 = double.parse(table.elementAt(1));
+          precentage = ((num - num1) / num1) * 100;
+          result = precentage.toString();
+        }
+
+
       }
+        else {
+          equationFontSize = 48.0;
+          resultFontSize = 38.0;
+          if (equation == "0") {
+            equation = buttonText;
+          } else {
+            equation = equation + buttonText;
+          }
+        }
+      
     });
   }
 
