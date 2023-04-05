@@ -46,13 +46,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         equation = equation.substring(0, equation.length - 1);
         if (equation == "") {
           equation = "0";
-        } else if (buttonText == "percentage") {
-          table = equation.split("percentage");
-          num = table.elementAt(0);
-          num1 = table.elementAt(1);
-          precentage = ((num - num1) / num1) * 100;
-          result = precentage.toString();
-        }
+        } 
       } else if (buttonText == "=") {
         equationFontSize = 38.0;
         resultFontSize = 48.0;
@@ -62,6 +56,13 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         expression = expression.replaceAll('÷', '/');
 
         try {
+          if (buttonText == "percentage") {
+          table = equation.split("percentage");
+          num = table.elementAt(0);
+          num1 = table.elementAt(1);
+          precentage = ((num - num1) / num1) * 100;
+          result = precentage.toString();
+        }
           Parser p = Parser();
           Expression exp = p.parse(expression);
 
