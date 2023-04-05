@@ -2,7 +2,6 @@ import '../widget/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-
 void main() => runApp(Calculator());
 
 class Calculator extends StatelessWidget {
@@ -24,7 +23,28 @@ class _HomeState extends State<Home> {
   var userInput = '';
   var answer = '0';
 
-  final List<String> buttons = ['C', '%', 'DEL', '/', '7', '8', '9', 'x', '4', '5', '6', '-', '1', '2', '3', '+', '00', '0', '.', '=',];
+  final List<String> buttons = [
+    'C',
+    '%',
+    'DEL',
+    '/',
+    '7',
+    '8',
+    '9',
+    'x',
+    '4',
+    '5',
+    '6',
+    '-',
+    '1',
+    '2',
+    '3',
+    '+',
+    '00',
+    '0',
+    '.',
+    '=',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +77,7 @@ class _HomeState extends State<Home> {
                       answer,
                       style: TextStyle(
                         fontSize: 55,
-                        color: Colors.black,
+                        color: Colors.pink,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -76,22 +96,20 @@ class _HomeState extends State<Home> {
                   crossAxisCount: 4,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-
                   if (index == 0) {
                     return MyButton(
                       buttontapped: () {
                         setState(() {
                           userInput = '';
                           answer = '0';
+                         
                         });
                       },
                       buttonText: buttons[index],
-                      color: Colors.black,
+                      color: Colors.pink,
                       textColor: Colors.white,
                     );
-                  }
-
-                  else if (index == 1) {
+                  } else if (index == 1) {
                     return MyButton(
                       buttontapped: () {
                         setState(() {
@@ -99,12 +117,10 @@ class _HomeState extends State<Home> {
                         });
                       },
                       buttonText: buttons[index],
-                      color: Colors.black,
+                      color: Colors.pink,
                       textColor: Colors.white,
                     );
-                  }
-
-                  else if (index == 2) {
+                  } else if (index == 2) {
                     return MyButton(
                       buttontapped: () {
                         setState(() {
@@ -113,12 +129,10 @@ class _HomeState extends State<Home> {
                         });
                       },
                       buttonText: buttons[index],
-                      color: Colors.black,
+                      color: Colors.pink,
                       textColor: Colors.white,
                     );
-                  }
-
-                  else if (index == 19) {
+                  } else if (index == 19) {
                     return MyButton(
                       buttontapped: () {
                         setState(() {
@@ -126,12 +140,10 @@ class _HomeState extends State<Home> {
                         });
                       },
                       buttonText: buttons[index],
-                      color: Colors.black,
+                      color: Colors.pink,
                       textColor: Colors.white,
                     );
-                  }
-
-                  else {
+                  } else {
                     return MyButton(
                       buttontapped: () {
                         setState(() {
@@ -140,11 +152,11 @@ class _HomeState extends State<Home> {
                       },
                       buttonText: buttons[index],
                       color: isOperator(buttons[index])
-                          ? Colors.black
+                          ? Colors.pink
                           : Colors.grey.withOpacity(0.3),
                       textColor: isOperator(buttons[index])
                           ? Colors.white
-                          : Colors.black,
+                          : Colors.pink,
                     );
                   }
                 },
