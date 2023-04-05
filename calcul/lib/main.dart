@@ -179,14 +179,23 @@ class _HomeState extends State<Home> {
   void equalPressed() {
     String finaluserinput = userInput;
     if (finaluserinput.contains("%")) {
-      answer = "hello";
-    }
-    finaluserinput = userInput.replaceAll('x', '*');
+      double num1;
+      double num2;
+      double pre;
+      var table = [];
+      table = finaluserinput.split("%");
+      num1 = double.parse(table.elementAt(0));
+      num2 = double.parse(table.elementAt(1));
+      pre = num1 * num2 / 100;
+      answer = (num1 - pre).toString();
+    } else {
+      finaluserinput = userInput.replaceAll('x', '*');
 
-    Parser p = Parser();
-    Expression exp = p.parse(finaluserinput);
-    ContextModel cm = ContextModel();
-    double eval = exp.evaluate(EvaluationType.REAL, cm);
-    answer = eval.toString();
+      Parser p = Parser();
+      Expression exp = p.parse(finaluserinput);
+      ContextModel cm = ContextModel();
+      double eval = exp.evaluate(EvaluationType.REAL, cm);
+      answer = eval.toString();
+    }
   }
 }
