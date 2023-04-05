@@ -46,7 +46,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         equation = equation.substring(0, equation.length - 1);
         if (equation == "") {
           equation = "0";
-        } 
+        }
       } else if (buttonText == "=") {
         equationFontSize = 38.0;
         resultFontSize = 48.0;
@@ -55,14 +55,14 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         expression = expression.replaceAll('X', '*');
         expression = expression.replaceAll('÷', '/');
 
-        try {
-          if (buttonText == "percentage") {
+        if (buttonText == "percentage") {
           table = equation.split("percentage");
           num = table.elementAt(0);
           num1 = table.elementAt(1);
           precentage = ((num - num1) / num1) * 100;
           result = precentage.toString();
-        }
+        } else {
+        try {
           Parser p = Parser();
           Expression exp = p.parse(expression);
 
@@ -70,7 +70,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           result = '${exp.evaluate(EvaluationType.REAL, cm)}';
         } catch (e) {
           result = "Error";
-        }
+        }}
       } else {
         equationFontSize = 48.0;
         resultFontSize = 38.0;
