@@ -102,7 +102,6 @@ class _HomeState extends State<Home> {
                         setState(() {
                           userInput = '';
                           answer = '0';
-                         
                         });
                       },
                       buttonText: buttons[index],
@@ -179,6 +178,9 @@ class _HomeState extends State<Home> {
   // function to calculate the input operation
   void equalPressed() {
     String finaluserinput = userInput;
+    if (finaluserinput.contains("%")) {
+      answer = "hello";
+    }
     finaluserinput = userInput.replaceAll('x', '*');
 
     Parser p = Parser();
