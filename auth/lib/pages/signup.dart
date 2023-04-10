@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -11,23 +9,6 @@ class Signuppage extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
-
-  void signUserup() {
-    bool email = EmailValidator.validate(emailController.text);
-    if (email == true) {
-      Navigator.push(
-          context as BuildContext,
-          MaterialPageRoute(
-            builder: (context) => Home(),
-          ));
-    }
-    else{
-       usernameController.clear();
-      passwordController.clear();
-      emailController.clear();
-
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +72,33 @@ class Signuppage extends StatelessWidget {
 
                 // sign in button
                 MyButtonup(
-                  onTap: signUserup,
+                  onTap: () {
+                    bool email = EmailValidator.validate(emailController.text);
+                    if (email == true) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(),
+                          ));
+                    } else {
+                      usernameController.clear();
+                      passwordController.clear();
+                      emailController.clear();
+                      final snackBar = SnackBar(
+                        content: const Text('please enter a valid email'),
+                        action: SnackBarAction(
+                          label: 'Undo',
+                          onPressed: () {
+                            // Some code to undo the change.
+                          },
+                        ),
+                      );
+
+                      // Find the ScaffoldMessenger in the widget tree
+                      // and use it to show a SnackBar.
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  },
                   email: emailController.text,
                   password: passwordController.text,
                   username: usernameController.text,

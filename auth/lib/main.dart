@@ -44,6 +44,21 @@ class _HomeState extends State<Home> {
     } else {
       usernameController.clear();
       passwordController.clear();
+
+      final snackBar = SnackBar(
+        
+        content: const Text('user or password unvalid'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            // Some code to undo the change.
+          },
+        ),
+      );
+
+      // Find the ScaffoldMessenger in the widget tree
+      // and use it to show a SnackBar.
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 

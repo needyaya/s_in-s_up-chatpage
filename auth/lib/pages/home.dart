@@ -1,3 +1,4 @@
+import 'package:auth/pages/chatpage.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -64,52 +65,62 @@ class MyHomePage extends StatelessWidget {
             height: 50,
           ),
           SafeArea(
-              child: Container(
-            padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Row(
-                    children: <Widget>[
-                      CircleAvatar(
-                        backgroundImage: NetworkImage("images/mypicture.jpg"),
-                        maxRadius: 30,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: Container(
-                          color: Colors.transparent,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'hello',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 6,
-                              ),
-                              Text(
-                                'hello',
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    color: Colors.grey.shade600,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+              child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => chat(),
+                  ));
+            },
+            child: Container(
+              padding:
+                  EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundImage: NetworkImage("images/mypicture.jpg"),
+                          maxRadius: 30,
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Expanded(
+                          child: Container(
+                            color: Colors.transparent,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'THE DOORZ',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 6,
+                                ),
+                                Text(
+                                  'hello',
+                                  style: TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.grey.shade600,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Text(
-                  'yesterday',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                ),
-              ],
+                  Text(
+                    DateTime.now().toString(),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           )),
         ]),
