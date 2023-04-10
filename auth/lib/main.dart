@@ -28,7 +28,24 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  void signUserIn() {}
+  void signUserIn() {
+    String gooduser = 'aya';
+    String goodpass = '123456@123456';
+
+    print(usernameController.text);
+    print(passwordController.text);
+    if (usernameController.text == gooduser &&
+        passwordController.text == goodpass) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const MyHomePage(),
+          ));
+    } else {
+      usernameController.clear();
+      passwordController.clear();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,25 +101,13 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 10),
 
               // forgot password?
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Colors.grey[900]),
-                    ),
-                  ],
-                ),
-              ),
 
               const SizedBox(height: 25),
 
               // sign in button
               MyButton(
                 onTap: signUserIn,
-                email: usernameController.text,
+                user: usernameController.text,
                 password: passwordController.text,
               ),
 

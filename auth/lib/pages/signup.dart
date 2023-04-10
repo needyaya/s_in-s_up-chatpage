@@ -1,12 +1,33 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:email_validator/email_validator.dart';
+
 import '../tools/button.dart';
+import '../main.dart';
 import '../tools/textfield.dart';
 
 class Signuppage extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
-  void signUserup() {}
+
+  void signUserup() {
+    bool email = EmailValidator.validate(emailController.text);
+    if (email == true) {
+      Navigator.push(
+          context as BuildContext,
+          MaterialPageRoute(
+            builder: (context) => Home(),
+          ));
+    }
+    else{
+       usernameController.clear();
+      passwordController.clear();
+      emailController.clear();
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +92,9 @@ class Signuppage extends StatelessWidget {
                 // sign in button
                 MyButtonup(
                   onTap: signUserup,
+                  email: emailController.text,
+                  password: passwordController.text,
+                  username: usernameController.text,
                 ),
 
                 const SizedBox(height: 50),

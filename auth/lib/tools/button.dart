@@ -6,32 +6,19 @@ import '../main.dart';
 //sign in button
 class MyButton extends StatelessWidget {
   final Function()? onTap;
-  final String email;
+  final String user;
   final String password;
 
   const MyButton(
       {super.key,
       required this.onTap,
-      required this.email,
+      required this.user,
       required this.password});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        String goodemail = 'aya@gmail.com';
-        String goodpass = '123456@123456';
-
-        print(email);
-        print(password);
-        if (email == goodemail && password == goodpass) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const MyHomePage(),
-              ));
-        } else {}
-      },
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
@@ -57,8 +44,16 @@ class MyButton extends StatelessWidget {
 //sign up button
 class MyButtonup extends StatelessWidget {
   final Function()? onTap;
+  final String email;
+  final String password;
+  final String username;
 
-  const MyButtonup({super.key, required this.onTap});
+  const MyButtonup(
+      {super.key,
+      required this.onTap,
+      required this.email,
+      required this.password,
+      required this.username});
 
   @override
   Widget build(BuildContext context) {
