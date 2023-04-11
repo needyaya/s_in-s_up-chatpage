@@ -40,7 +40,9 @@ dependencies:
   email_validator: ^2.0.1
   dash_chat: ^1.1.16
   sendbird_sdk: ^3.2.8
-  
+  grouped_list: ^5.1.2
+  intl: ^0.15.7
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,7 +68,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
 assets:
-  - assets/images/mypicture.jpg
+  - build/app/images/mypicture.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

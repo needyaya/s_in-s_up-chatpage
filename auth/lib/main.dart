@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+
 import '../pages/signin.dart';
 import '../pages/home.dart';
 import '../tools/button.dart';
 import '../tools/textfield.dart';
-import 'package:flutter/gestures.dart';
 import '../pages/signup.dart';
 
 void main() {
@@ -30,7 +31,7 @@ class _HomeState extends State<Home> {
   final passwordController = TextEditingController();
   void signUserIn() {
     String gooduser = 'aya';
-    String goodpass = '123456@123456';
+    String goodpass = '123456';
 
     print(usernameController.text);
     print(passwordController.text);
@@ -46,7 +47,6 @@ class _HomeState extends State<Home> {
       passwordController.clear();
 
       final snackBar = SnackBar(
-        
         content: const Text('user or password unvalid'),
         action: SnackBarAction(
           label: 'Undo',

@@ -1,13 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:dash_chat/dash_chat.dart';
+import 'package:grouped_list/grouped_list.dart';
+import 'package:intl/intl.dart';
 
 import '../tools/button.dart';
+import '../tools/chatcard.dart';
 import '../main.dart';
 import '../tools/textfield.dart';
 
-class chat extends StatelessWidget {
+class chat extends StatefulWidget {
+  const chat({super.key});
+  @override
+  State<chat> createState() => _ChatState();
+}
+
+class _ChatState extends State<chat> {
   final messagecontroller = TextEditingController();
+  List<MyMessageCard> messages = [
+    MyMessageCard(
+      message: 'ofcc',
+      date: DateTime.now().subtract(const Duration(minutes: 1)),
+      user: true,
+    ),
+    MyMessageCard(
+      message: 'tomorow',
+      date: DateTime.now().subtract(const Duration(days: 4, minutes: 3)),
+      user: false,
+    ),
+    MyMessageCard(
+      message: 'hello',
+      date: DateTime.now().subtract(const Duration(days: 3, minutes: 5)),
+      user: true,
+    ),
+    MyMessageCard(
+      message: 'yay',
+      date: DateTime.now().subtract(Duration(minutes: 1)),
+      user: false,
+    ),
+    MyMessageCard(
+      message: 'ofcc',
+      date: DateTime.now().subtract(Duration(minutes: 3)),
+      user: false,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +102,38 @@ class chat extends StatelessWidget {
         ),
         body: Stack(
           children: <Widget>[
+            Expanded(
+                child: GroupedListView<MyMessageCard, DateTime>(
+              elements: messages,
+              groupBy: (message) => DateTime(
+                  message.date.year, message.date.month, message.date.day),
+              groupHeaderBuilder: (MyMessageCard message) => SizedBox(
+                height: 40,
+                child: Center(
+                  child: Card(
+                    color: Colors.pink,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        DateFormat.yMMMd().format(message.date).toString(),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              itemBuilder: (context, MyMessageCard message) => Align(
+                alignment:
+                    message.user ? Alignment.centerRight : Alignment.centerLeft,
+                child: Card(
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(message.message),
+                  ),
+                ),
+              ),
+            )),
             Align(
               alignment: Alignment.bottomLeft,
               child: Container(
@@ -109,31 +177,10 @@ class chat extends StatelessWidget {
                     FloatingActionButton(
                       onPressed: () {
                         print(messagecontroller.text);
-
-                        ListView.builder(
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.only(top: 10, bottom: 10),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              padding: const EdgeInsets.only(
-                                  left: 14, right: 14, top: 10, bottom: 10),
-                              child: Align(
-                                alignment: (Alignment.topRight),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: (Colors.blue[200]),
-                                  ),
-                                  padding: const EdgeInsets.all(16),
-                                  child: Text(
-                                    messagecontroller.text,
-                                    style: const TextStyle(fontSize: 15),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                        String text = messagecontroller.text;
+                        final message = MyMessageCard(
+                            message: text, date: DateTime.now(), user: true);
+                        setState(() => (messages.add(message)));
                       },
                       child: Icon(
                         Icons.send,
