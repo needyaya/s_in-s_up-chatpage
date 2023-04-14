@@ -70,6 +70,9 @@ class _ChatState extends State<chat> {
                       width: 2,
                     ),
                     const CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+                          scale: 1),
                       maxRadius: 20,
                     ),
                     const SizedBox(
@@ -151,7 +154,7 @@ class _ChatState extends State<chat> {
                           height: 30,
                           width: 30,
                           decoration: BoxDecoration(
-                            color: Colors.lightBlue,
+                            color: Colors.pink[200],
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: const Icon(
@@ -190,7 +193,7 @@ class _ChatState extends State<chat> {
                           color: Colors.white,
                           size: 18,
                         ),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.pink[200],
                         elevation: 0,
                       ),
                     ],

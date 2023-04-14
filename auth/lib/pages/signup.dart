@@ -1,9 +1,14 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:email_validator/email_validator.dart';
 
+import '../pages/signin.dart';
+import '../pages/home.dart';
 import '../tools/button.dart';
-import '../main.dart';
 import '../tools/textfield.dart';
+import '../pages/signup.dart';
+import '../pages/auth.dart';
 
 class Signuppage extends StatelessWidget {
   final usernameController = TextEditingController();
@@ -71,15 +76,16 @@ class Signuppage extends StatelessWidget {
                 const SizedBox(height: 25),
 
                 // sign in button
-                MyButtonup(
+                MyButton(
                   onTap: () {
                     bool email = EmailValidator.validate(emailController.text);
                     if (email == true) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Home(),
-                          ));
+                      () async {
+                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                          email: usernameController.text,
+                          password: passwordController.text,
+                        );
+                      };
                     } else {
                       usernameController.clear();
                       passwordController.clear();
@@ -112,4 +118,4 @@ class Signuppage extends StatelessWidget {
       ),
     );
   }
-}
+}*/
